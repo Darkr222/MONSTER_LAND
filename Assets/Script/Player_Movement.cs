@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float horizontalInput;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        walk();
+    }
+
+    private void walk()
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+        transform.position = new Vector3(horizontalInput, 0f, 0f);
+
+
     }
 }
