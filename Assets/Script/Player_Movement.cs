@@ -6,9 +6,10 @@ public class Player_Movement : MonoBehaviour
 {
     public float horizontalInput;
     public float _speed = 10;
+    public Animator animator;
     void Start()
     {
-        
+        animator.GetComponent<Animator>();
     }
 
     
@@ -20,8 +21,19 @@ public class Player_Movement : MonoBehaviour
     private void walk()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        transform.position = new Vector3(horizontalInput, 0f, 0f) * _speed * Time.deltaTime;
+        transform.position += new Vector3(horizontalInput, 0f, 0f) * _speed * Time.deltaTime;
+        animator.SetFloat("_speed", Mathf.Abs(horizontalInput));
 
+        Vector3 playerScale = transform.localScale;
+        if(Input.GetAxis("Horizontal") > 0 )
+        {
+            playerScale.x = 1;
+        }
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            playerScale.x = -1;
+        }
 
+        transform.localScale = playerScale;
     }
 }
