@@ -36,4 +36,9 @@ public class Player_Movement : MonoBehaviour
 
         transform.localScale = playerScale; // player filp
     }
+
+    private void playerjump()
+    {
+
+    }
 }
